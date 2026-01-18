@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+
+  /* Core color tokens */
+  --color-black-rgb: 0 0 0;
+  --color-white-rgb: 255 255 255;
+  --color-gray-400-rgb: 156 163 175;
+  --color-gray-900-rgb: 17 24 39;
+  --color-zinc-900-rgb: 24 24 27;
+  --color-zinc-800-rgb: 39 39 42;
+  --color-zinc-700-rgb: 63 63 70;
+  --color-zinc-600-rgb: 82 82 91;
+  --color-zinc-500-rgb: 113 113 122;
+  --color-zinc-400-rgb: 161 161 170;
+  --color-red-950-rgb: 69 10 10;
+  --color-red-900-rgb: 127 29 29;
+  --color-red-600-rgb: 220 38 38;
+  --color-red-500-rgb: 239 68 68;
+  --color-red-400-rgb: 248 113 113;
+  --color-green-400-rgb: 74 222 128;
+  --color-cyan-500-rgb: 6 182 212;
+  --color-purple-950-rgb: 59 7 100;
+  --color-blue-glow-rgb: 150 200 255;
+  --color-accent: #d72638;
+
+  /* Glow & shadow tokens */
+  --shadow-glow-white-strong: 0 0 10px rgba(255, 255, 255, 0.9);
+  --shadow-glow-white-logo: 0 0 15px rgba(255, 255, 255, 0.9);
+  --shadow-glow-white-soft: 0 0 15px rgba(255, 255, 255, 0.4);
+  --shadow-glow-red-strong: 0 0 10px rgba(220, 38, 38, 0.9);
+  --shadow-glow-red-soft: 0 0 10px rgba(255, 0, 0, 0.8);
+  --shadow-glow-red-small: 0 0 8px rgba(255, 0, 0, 0.8);
+  --shadow-glow-red-wide: 0 0 30px rgba(255, 100, 100, 0.3);
+  --shadow-play-button: 0 10px 15px -3px rgb(var(--color-black-rgb) / 0.3), 0 4px 6px -4px rgb(var(--color-black-rgb) / 0.3), 0 0 20px rgb(var(--color-red-500-rgb) / 0.5);
+
+  /* Scrollbar */
+  --scrollbar-track-rgb: 0 0 0;
+  --scrollbar-thumb-rgb: 51 51 51;
+  --scrollbar-thumb-hover-rgb: 68 68 68;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-14: 3.5rem;
+  --space-15: 3.75rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-22: 5.5rem;
+  --space-24: 6rem;
+  --space-25: 6.25rem;
+  --space-27: 6.75rem;
+  --space-28: 7rem;
+  --space-32: 8rem;
+
+  /* Typography scale */
+  --size-text-xs: 0.75rem;
+  --size-text-sm: 0.875rem;
+  --size-text-md: 1rem;
+  --size-text-base: 1rem;
+  --size-text-lg: 1.125rem;
+  --size-text-xl: 1.25rem;
+  --size-text-2xl: 1.5rem;
+  --size-text-3xl: 1.875rem;
+  --size-text-4xl: 2.25rem;
+  --size-text-6xl: 3.75rem;
+  --size-text-13: 13px;
+
+  /* Section layout - Unified spacing for all sections */
+  --section-padding-x: var(--space-4);
+  --section-padding-y: var(--space-16);
+  --section-title-size: var(--size-text-4xl);
+  --section-title-size-lg: var(--size-text-6xl);
+  --section-title-margin-bottom: var(--space-10);
+  --section-title-to-subtitle-margin: var(--space-2);
+  --section-subtitle-size: var(--size-text-2xl);
+  --section-subtitle-margin-bottom: var(--space-8);
+  --body-text-lg: var(--size-text-3xl);
+
+  /* Navigation */
+  --nav-padding: var(--space-10);
+  --nav-padding-scrolled: var(--space-3);
+  --nav-container-padding-x: var(--space-8);
+  --nav-link-size: var(--size-text-2xl);
+  --nav-link-size-mobile: var(--size-text-sm);
+  --nav-link-gap: var(--space-15);
+  --nav-logo-gap: var(--space-25);
+  --nav-logo-size: 5.5rem;
+  --nav-logo-size-scrolled: 2rem;
+  --nav-icon-size: 1.25rem;
+  --nav-social-gap: var(--space-4);
+
+  /* Scroll */
+  --scroll-padding-top: 64px;
+
+  /* Hero */
+  --hero-offset: -6rem;
+  --hero-offset-md: -8rem;
+  --hero-logo-gap: var(--space-4);
+  --hero-logo-gap-md: var(--space-6);
+  --hero-logo-height: 4rem;
+  --hero-logo-height-md: 6rem;
+  --hero-logo-height-lg: 5rem;
+  --hero-logo-margin-right: var(--space-14);
+  --hero-tribute-height: 3rem;
+  --hero-tribute-height-md: 5rem;
+  --hero-tribute-height-lg: var(--space-27);
+  --hero-tribute-margin-top: var(--space-3);
+  --hero-tribute-margin-top-md: var(--space-5);
+  --hero-scroll-size: 2rem;
+  --hero-scroll-bottom: var(--space-8);
+
+  /* Biography - Component-specific variables only */
+  --bio-paragraph-margin-bottom: var(--space-12);
+  --bio-member-gap: var(--space-8);
+  --bio-member-gap-md: var(--space-12);
+  --bio-member-photo: 8rem;
+  --bio-member-photo-md: 10rem;
+  --bio-member-photo-margin-bottom: var(--space-4);
+  --bio-member-name-size: var(--size-text-lg);
+  --bio-member-name-size-md: var(--size-text-2xl);
+  --bio-member-role-size: var(--size-text-md);
+  --bio-member-role-size-md: var(--size-text-2xl);
+  --bio-parallax-height: 25rem;
+  --bio-parallax-height-md: 50rem;
+
+  /* Events - Component-specific variables only */
+  --events-row-gap: var(--space-10);
+  --events-row-padding: var(--space-3);
+  --events-list-gap: var(--space-4);
+  --events-date-size: 3.5rem;
+  --events-date-column: var(--events-date-size);
+  --events-link-column: 50px;
+  --events-date-month-size: var(--size-text-13);
+  --events-date-day-size: var(--size-text-4xl);
+  --events-venue-size: var(--size-text-3xl);
+  --events-location-size: var(--size-text-2xl);
+  --events-row-max-width: 70rem;
+  --events-venue-max-width: 30rem;
+  --events-location-max-width: 40rem;
+
+  /* Videos - Component-specific variables only */
+  --video-grid-gap: var(--space-6);
+  --video-grid-gap-md: var(--space-8);
+  --video-modal-padding: var(--space-4);
+  --video-modal-padding-lg: var(--space-8);
+  --video-modal-controls-margin-top: var(--space-4);
+  --video-modal-controls-padding-x: var(--space-4);
+  --video-card-title-size: var(--size-text-sm);
+  --video-card-title-size-md: var(--size-text-base);
+  --video-modal-title-size: var(--size-text-lg);
+  --video-modal-title-size-md: var(--size-text-xl);
+
+  /* Contact - Component-specific variables only */
+  --contact-button-gap: var(--space-3);
+  --contact-button-padding-y: var(--space-4);
+  --contact-button-padding-x: var(--space-8);
+  --contact-button-stack-gap: var(--space-4);
+  --contact-button-stack-margin-bottom: var(--space-12);
+  --contact-social-gap: var(--space-6);
+  --contact-social-icon: 2rem;
+
+  /* Footer */
+  --footer-padding-y: var(--space-2);
+  --footer-text-size: var(--size-text-lg);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Open Sans Condensed', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-padding-top: var(--scroll-padding-top);
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--scrollbar-track-rgb));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--scrollbar-thumb-rgb));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--scrollbar-thumb-hover-rgb));
+}
+
+/* Fade in animation for hero logo */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
