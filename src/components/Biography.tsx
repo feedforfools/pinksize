@@ -1,7 +1,3 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-
 const bandMembers = [
   {
     name: "Matteo Ballarin",
@@ -26,29 +22,6 @@ const bandMembers = [
 ];
 
 export default function Biography() {
-  const parallaxRef = useRef<HTMLDivElement>(null);
-  const [offsetY, setOffsetY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (parallaxRef.current) {
-        const rect = parallaxRef.current.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        // Only apply parallax when the element is in view
-        if (rect.top < windowHeight && rect.bottom > 0) {
-          const scrolled = windowHeight - rect.top;
-          setOffsetY(scrolled * 0.15); // Parallax speed factor
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial call
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <section
       id="biografia"
@@ -75,20 +48,18 @@ export default function Biography() {
           {bandMembers.map((member) => (
             <div key={member.name} className="text-center">
               {/* Circular Photo Placeholder */}
-              <div className="relative mx-auto w-[var(--bio-member-photo)] h-[var(--bio-member-photo)] md:w-[var(--bio-member-photo-md)] md:h-[var(--bio-member-photo-md)] mb-[var(--bio-member-photo-margin-bottom)]">
-                <div className="absolute inset-0 rounded-full border-5 border-[rgb(var(--color-white-rgb))] overflow-hidden">
+              <div className="relative mx-auto w-20 h-20 sm:w-[var(--bio-member-photo)] sm:h-[var(--bio-member-photo)] md:w-[var(--bio-member-photo-md)] md:h-[var(--bio-member-photo-md)] mb-2 sm:mb-[var(--bio-member-photo-margin-bottom)]">
+                <div className="absolute inset-0 rounded-full border-2 sm:border-5 border-[rgb(var(--color-white-rgb))] overflow-hidden">
                   <div
                     className="w-full h-full bg-cover bg-center"
                     style={{ backgroundImage: `url(${member.image})` }}
                   />
-                  {/* Fallback placeholder */}
-                  <div className="absolute inset-0 flex items-center justify-center"></div>
                 </div>
               </div>
-              <h3 className="text-[rgb(var(--color-white-rgb))] font-bold text-[length:var(--bio-member-name-size)] md:text-[length:var(--bio-member-name-size-md)]">
+              <h3 className="text-[rgb(var(--color-white-rgb))] font-bold text-sm sm:text-[length:var(--bio-member-name-size)] md:text-[length:var(--bio-member-name-size-md)]">
                 {member.name}
               </h3>
-              <p className="text-[rgb(var(--color-gray-400-rgb))] text-[length:var(--bio-member-role-size)] md:text-[length:var(--bio-member-role-size-md)]">
+              <p className="text-[rgb(var(--color-gray-400-rgb))] text-xs sm:text-[length:var(--bio-member-role-size)] md:text-[length:var(--bio-member-role-size-md)]">
                 {member.role}
               </p>
             </div>
@@ -96,20 +67,9 @@ export default function Biography() {
         </div>
       </div>
 
-      {/* Band Group Photo with Parallax - Full bleed element outside padded content */}
-      <div
-        ref={parallaxRef}
-        className="w-full h-[var(--bio-parallax-height)] md:h-[var(--bio-parallax-height-md)] relative overflow-hidden"
-      >
-        <div
-          className="absolute inset-0 bg-[url('/images/band-group.jpg')] bg-cover bg-no-repeat"
-          style={{
-            backgroundPosition: `center calc(-12% - ${offsetY}px)`,
-            transform: `translateY(-${offsetY * 0.2}px)`,
-            height: "120%",
-            top: "-10%",
-          }}
-        />
+      {/* Band Group Photo */}
+      <div className="w-full h-[250px] sm:h-[var(--bio-parallax-height)] md:h-[var(--bio-parallax-height-md)] relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/images/band-group.jpg')] bg-cover bg-[center_25%] bg-no-repeat" />
       </div>
     </section>
   );

@@ -32,27 +32,10 @@ const fallbackEvents: Event[] = [
 
 function getDateParts(dateString: string): {
   day: number;
-  month: string;
   monthShort: string;
-  year: number;
-  weekday: string;
 } {
   const date = new Date(dateString);
   const day = date.getDate();
-  const months = [
-    "GENNAIO",
-    "FEBBRAIO",
-    "MARZO",
-    "APRILE",
-    "MAGGIO",
-    "GIUGNO",
-    "LUGLIO",
-    "AGOSTO",
-    "SETTEMBRE",
-    "OTTOBRE",
-    "NOVEMBRE",
-    "DICEMBRE",
-  ];
   const monthsShort = [
     "GEN",
     "FEB",
@@ -67,13 +50,9 @@ function getDateParts(dateString: string): {
     "NOV",
     "DIC",
   ];
-  const weekdays = ["DOM", "LUN", "MAR", "MER", "GIO", "VEN", "SAB"];
   return {
     day,
-    month: months[date.getMonth()],
     monthShort: monthsShort[date.getMonth()],
-    year: date.getFullYear(),
-    weekday: weekdays[date.getDay()],
   };
 }
 
@@ -175,39 +154,42 @@ export default function Events() {
           </p>
         ) : (
           <div className="flex justify-center">
-            <div className="table w-full sm:w-fit max-w-full sm:max-w-[var(--events-row-max-width)] border-separate border-spacing-y-[var(--events-list-gap)] -my-[var(--events-list-gap)]">
-              <div className="table-row-group">
+            <div className="w-full sm:w-fit max-w-full sm:max-w-[var(--events-row-max-width)]">
+              <div className="flex flex-col gap-[var(--events-list-gap)] sm:table sm:border-separate sm:border-spacing-y-[var(--events-list-gap)] sm:-my-[var(--events-list-gap)]">
                 {/* Event rows */}
                 {events.map((event) => (
                   <div
                     key={event.id}
-                    className={`group table-row transition-all duration-200 ease-out hover:scale-[1.015] hover:drop-shadow-[var(--shadow-glow-white-strong)] ${
+                    className={`group flex sm:table-row transition-all duration-200 ease-out hover:scale-[1.015] hover:drop-shadow-[var(--shadow-glow-white-strong)] ${
                       event.link ? "cursor-pointer" : ""
-                    }`}
+                    } bg-[rgba(var(--color-black-rgb),0.4)] sm:bg-transparent rounded-lg sm:rounded-none p-3 sm:p-0`}
                     onClick={() =>
                       event.link &&
                       window.open(event.link, "_blank", "noopener,noreferrer")
                     }
                   >
                     {/* Calendar Date */}
-                    <div className="table-cell align-middle pr-[calc(var(--events-row-gap)*0.6)] py-[var(--events-row-padding)]">
+                    <div className="sm:table-cell sm:align-middle sm:pr-[calc(var(--events-row-gap)*0.6)] sm:py-[var(--events-row-padding)] flex-shrink-0">
                       <div className="flex-shrink-0">
                         <CalendarDate dateString={event.date} />
                       </div>
                     </div>
 
-                    {/* Venue */}
-                    <div className="table-cell align-middle pl-[calc(var(--events-row-gap)*0.4)] pr-[var(--events-row-gap)] py-[var(--events-row-padding)] text-[rgb(var(--color-white-rgb))] font-bold text-[length:var(--events-venue-size)] max-w-[var(--events-venue-max-width)] truncate">
-                      {event.venue}
-                    </div>
+                    {/* Mobile: Venue + Location stacked | Desktop: separate cells */}
+                    <div className="sm:contents flex flex-col justify-start flex-1 min-w-0 pl-3 sm:pl-0 leading-tight">
+                      {/* Venue */}
+                      <div className="sm:table-cell sm:align-middle sm:pl-[calc(var(--events-row-gap)*0.4)] sm:pr-[var(--events-row-gap)] sm:py-[var(--events-row-padding)] text-[rgb(var(--color-white-rgb))] font-bold text-[length:var(--events-venue-size)] max-w-full sm:max-w-[var(--events-venue-max-width)] sm:truncate truncate text-left">
+                        {event.venue}
+                      </div>
 
-                    {/* Location */}
-                    <div className="table-cell align-middle pl-[var(--events-row-gap)] pr-[calc(var(--events-row-gap)*0.2)] py-[var(--events-row-padding)] text-[rgb(var(--color-white-rgb))] text-[length:var(--events-location-size)] max-w-[var(--events-location-max-width)] truncate">
-                      {event.location}
+                      {/* Location */}
+                      <div className="sm:table-cell sm:align-middle sm:pl-[var(--events-row-gap)] sm:pr-[calc(var(--events-row-gap)*0.2)] sm:py-[var(--events-row-padding)] text-[rgb(var(--color-white-rgb))] text-[length:var(--events-location-size)] max-w-full sm:max-w-[var(--events-location-max-width)] sm:truncate truncate text-left opacity-80 sm:opacity-100">
+                        {event.location}
+                      </div>
                     </div>
 
                     {/* Link Icon - always visible for rows with links */}
-                    <div className="table-cell align-middle pl-[calc(var(--events-row-gap)*0.2)] py-[var(--events-row-padding)]">
+                    <div className="sm:table-cell sm:align-middle sm:pl-[calc(var(--events-row-gap)*0.2)] sm:py-[var(--events-row-padding)] flex items-center justify-center flex-shrink-0 pl-2 sm:pl-0">
                       <div className="flex items-center justify-center w-[var(--events-link-column)]">
                         {event.link && (
                           <span className="text-[rgb(var(--color-white-rgb))] opacity-60 group-hover:opacity-100 transition-opacity duration-200">

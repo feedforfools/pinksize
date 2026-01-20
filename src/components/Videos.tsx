@@ -249,7 +249,7 @@ function VideoModal({ video, onClose }: { video: Video; onClose: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-[var(--video-modal-padding)] md:p-[var(--video-modal-padding-lg)]"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-[var(--video-modal-padding)] md:p-[var(--video-modal-padding-lg)]"
       onClick={onClose}
     >
       {/* Backdrop with static noise */}
@@ -265,11 +265,15 @@ function VideoModal({ video, onClose }: { video: Video; onClose: () => void }) {
       {/* Modal Content - Large Retro TV */}
       <div
         className="relative w-full max-w-5xl animate-[fadeIn_0.3s_ease-out]"
+        style={{
+          maxHeight: "calc(100vh - 32px)",
+          maxWidth: "min(64rem, calc((100vh - 32px - 5rem) * 16 / 9))",
+        }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* TV Frame */}
-        <div className="bg-gradient-to-b from-[rgb(var(--color-zinc-700-rgb))] via-[rgb(var(--color-zinc-800-rgb))] to-[rgb(var(--color-zinc-900-rgb))] rounded-xl p-4 md:p-6 shadow-2xl">
-          <div className="bg-[rgb(var(--color-black-rgb))] rounded-lg p-2 md:p-3">
+        <div className="bg-gradient-to-b from-[rgb(var(--color-zinc-700-rgb))] via-[rgb(var(--color-zinc-800-rgb))] to-[rgb(var(--color-zinc-900-rgb))] rounded-lg sm:rounded-xl p-2 sm:p-4 md:p-6 shadow-2xl">
+          <div className="bg-[rgb(var(--color-black-rgb))] rounded-md sm:rounded-lg p-1 sm:p-2 md:p-3">
             <div
               className="relative aspect-video rounded overflow-hidden"
               style={{
@@ -288,25 +292,25 @@ function VideoModal({ video, onClose }: { video: Video; onClose: () => void }) {
           </div>
 
           {/* TV Bottom with controls */}
-          <div className="flex items-center justify-between mt-[var(--video-modal-controls-margin-top)] px-[var(--video-modal-controls-padding-x)]">
-            <div className="flex gap-3">
-              <div className="w-6 h-6 rounded-full bg-gradient-to-b from-[rgb(var(--color-zinc-500-rgb))] to-[rgb(var(--color-zinc-700-rgb))] border-2 border-[rgb(var(--color-zinc-600-rgb))]" />
-              <div className="w-6 h-6 rounded-full bg-gradient-to-b from-[rgb(var(--color-zinc-500-rgb))] to-[rgb(var(--color-zinc-700-rgb))] border-2 border-[rgb(var(--color-zinc-600-rgb))]" />
+          <div className="flex items-center justify-between mt-2 sm:mt-[var(--video-modal-controls-margin-top)] px-1 sm:px-[var(--video-modal-controls-padding-x)]">
+            <div className="flex gap-1.5 sm:gap-3">
+              <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-gradient-to-b from-[rgb(var(--color-zinc-500-rgb))] to-[rgb(var(--color-zinc-700-rgb))] border sm:border-2 border-[rgb(var(--color-zinc-600-rgb))]" />
+              <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-gradient-to-b from-[rgb(var(--color-zinc-500-rgb))] to-[rgb(var(--color-zinc-700-rgb))] border sm:border-2 border-[rgb(var(--color-zinc-600-rgb))]" />
             </div>
-            <p className="text-[rgb(var(--color-white-rgb))] font-bold text-[length:var(--video-modal-title-size)] md:text-[length:var(--video-modal-title-size-md)] tracking-wider uppercase">
+            <p className="text-[rgb(var(--color-white-rgb))] font-bold text-xs sm:text-[length:var(--video-modal-title-size)] md:text-[length:var(--video-modal-title-size-md)] tracking-wider uppercase truncate max-w-[50%]">
               {video.title}
             </p>
-            <div className="w-3 h-3 rounded-full bg-[rgb(var(--color-red-500-rgb))] shadow-[var(--shadow-glow-red-soft)] animate-pulse" />
+            <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[rgb(var(--color-red-500-rgb))] shadow-[var(--shadow-glow-red-soft)] animate-pulse" />
           </div>
         </div>
 
-        {/* Close button */}
+        {/* Close button - positioned inside on small screens */}
         <button
           onClick={onClose}
-          className="absolute -top-4 -right-4 w-10 h-10 rounded-full bg-[rgb(var(--color-zinc-800-rgb))] border-2 border-[rgb(var(--color-zinc-600-rgb))] text-[rgb(var(--color-white-rgb))] flex items-center justify-center hover:bg-[rgb(var(--color-red-600-rgb))] hover:border-[rgb(var(--color-red-500-rgb))] transition-colors"
+          className="absolute top-1 right-1 sm:-top-3 sm:-right-3 md:-top-4 md:-right-4 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[rgb(var(--color-zinc-800-rgb)/0.9)] sm:bg-[rgb(var(--color-zinc-800-rgb))] border-2 border-[rgb(var(--color-zinc-600-rgb))] text-[rgb(var(--color-white-rgb))] flex items-center justify-center hover:bg-[rgb(var(--color-red-600-rgb))] hover:border-[rgb(var(--color-red-500-rgb))] transition-colors z-10"
         >
           <svg
-            className="w-5 h-5"
+            className="w-4 h-4 sm:w-5 sm:h-5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -343,7 +347,7 @@ export default function Videos() {
         </h2>
 
         {/* Video Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--video-grid-gap)] md:gap-[var(--video-grid-gap-md)]">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-[var(--video-grid-gap)] md:gap-[var(--video-grid-gap-md)]">
           {videos.map((video) => (
             <RetroTV
               key={video.id}

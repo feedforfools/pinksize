@@ -19,14 +19,10 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isMenuOpen
-          ? "bg-transparent backdrop-blur-none"
-          : "bg-[rgb(var(--color-black-rgb)/0.7)] backdrop-blur-sm"
-      } ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[rgb(var(--color-black-rgb)/0.7)] backdrop-blur-sm ${
         isScrolled
-          ? "py-[var(--nav-padding-scrolled)]"
-          : "py-[var(--nav-padding)]"
+          ? "py-[var(--nav-padding)] lg:py-[var(--nav-padding-scrolled)]"
+          : "py-[var(--nav-padding)] lg:py-[var(--nav-padding)]"
       } ${isScrolled ? "" : "lg:bg-transparent lg:backdrop-blur-none"}`}
     >
       <div className="max-w-7xl mx-auto px-[var(--nav-container-padding-x)]">
@@ -48,7 +44,7 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Logo - Center */}
+          {/* Logo */}
           <Link
             href="/"
             className="flex items-center mx-[var(--nav-logo-gap)] transition-all duration-200 ease-out hover:drop-shadow-[var(--shadow-glow-white-logo)]"
@@ -83,7 +79,7 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Social Icons - Absolute Far Right */}
+          {/* Social Icons */}
           <div className="absolute right-0 flex items-center gap-[var(--nav-social-gap)]">
             <a
               href="https://facebook.com"
@@ -130,11 +126,28 @@ export default function Navigation() {
           </div>
         </div>
 
-        {/* Mobile menu button */}
-        <div className="lg:hidden flex justify-end">
+        {/* Mobile menu bar */}
+        <div className="lg:hidden flex items-center justify-between">
+          <button
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              setIsMenuOpen(false);
+            }}
+            className="flex items-center transition-all duration-200 ease-out hover:drop-shadow-[var(--shadow-glow-white-logo)]"
+          >
+            <Image
+              src="/images/logo-pig-retina.png"
+              alt="Pink Size Logo"
+              width={72}
+              height={72}
+              className="w-10 h-10"
+              priority
+            />
+          </button>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-[rgb(var(--color-white-rgb))] p-2"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             <svg
               className="w-6 h-6"
@@ -164,36 +177,36 @@ export default function Navigation() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="lg:hidden pb-4">
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col items-center text-center space-y-4">
               <Link
                 href="#biografia"
-                className="text-[rgb(var(--color-white-rgb))] text-[length:var(--nav-link-size-mobile)] tracking-tight inline-block transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
+                className="text-[rgb(var(--color-white-rgb))] text-[length:calc(var(--nav-link-size-mobile)*1.4)] font-bold tracking-tight inline-block w-full text-center transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 BIOGRAFIA
               </Link>
               <Link
                 href="#video"
-                className="text-[rgb(var(--color-white-rgb))] text-[length:var(--nav-link-size-mobile)] tracking-tight inline-block transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
+                className="text-[rgb(var(--color-white-rgb))] text-[length:calc(var(--nav-link-size-mobile)*1.4)] font-bold tracking-tight inline-block w-full text-center transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 VIDEO
               </Link>
               <Link
                 href="#live"
-                className="text-[rgb(var(--color-white-rgb))] text-[length:var(--nav-link-size-mobile)] tracking-tight inline-block transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
+                className="text-[rgb(var(--color-white-rgb))] text-[length:calc(var(--nav-link-size-mobile)*1.4)] font-bold tracking-tight inline-block w-full text-center transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 LIVE
               </Link>
               <Link
                 href="#contatti"
-                className="text-[rgb(var(--color-white-rgb))] text-[length:var(--nav-link-size-mobile)] tracking-tight inline-block transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
+                className="text-[rgb(var(--color-white-rgb))] text-[length:calc(var(--nav-link-size-mobile)*1.4)] font-bold tracking-tight inline-block w-full text-center transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 CONTATTI
               </Link>
-              <div className="flex items-center gap-[var(--nav-social-gap)] pt-2">
+              <div className="flex items-center justify-center gap-[var(--nav-social-gap)] pt-2">
                 <a
                   href="https://www.youtube.com/@pinksize"
                   target="_blank"

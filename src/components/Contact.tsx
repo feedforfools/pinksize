@@ -112,7 +112,7 @@ export default function Contact() {
         <h2 className="text-[length:var(--section-title-size)] md:text-[length:var(--section-title-size-lg)] font-bold text-center mb-[var(--section-title-margin-bottom)] tracking-tight">
           CONTATTI
         </h2>
-        <p className="text-center text-[rgb(var(--color-gray-400-rgb))] mb-[var(--space-4)] text-[length:var(--section-subtitle-size)]">
+        <p className="text-center text-[rgb(var(--color-gray-400-rgb))] mb-[var(--space-4)] text-[length:var(--contact-label-size)]">
           Info & Booking
         </p>
 
@@ -123,7 +123,7 @@ export default function Contact() {
               {revealed[button.id] ? (
                 <a
                   href={button.href}
-                  className="flex items-center justify-center gap-[var(--contact-button-gap)] w-full bg-[rgb(var(--color-red-600-rgb))] text-[rgb(var(--color-white-rgb))] font-bold py-[var(--contact-button-padding-y)] px-[var(--contact-button-padding-x)] transition-all duration-200 ease-out tracking-wider border border-transparent hover:scale-105 hover:drop-shadow-[var(--shadow-glow-red-strong)]"
+                  className="flex items-center justify-center gap-[var(--contact-button-gap)] w-full bg-[rgb(var(--color-red-600-rgb))] text-[rgb(var(--color-white-rgb))] font-bold text-[length:var(--size-text-sm)] sm:text-[length:var(--size-text-base)] py-[var(--contact-button-padding-y)] px-[var(--contact-button-padding-x)] transition-all duration-200 ease-out tracking-wider border border-transparent hover:scale-105 hover:drop-shadow-[var(--shadow-glow-red-strong)]"
                 >
                   {button.icon}
                   <span>{button.revealedLabel}</span>
@@ -131,7 +131,7 @@ export default function Contact() {
               ) : (
                 <button
                   onClick={() => handleReveal(button.id)}
-                  className="flex items-center justify-center gap-[var(--contact-button-gap)] w-full bg-[rgb(var(--color-zinc-900-rgb))] text-[rgb(var(--color-white-rgb))] font-bold py-[var(--contact-button-padding-y)] px-[var(--contact-button-padding-x)] transition-all duration-200 ease-out tracking-wider border border-[rgb(var(--color-zinc-700-rgb))] hover:scale-105 hover:drop-shadow-[var(--shadow-glow-white-strong)] hover:border-[rgb(var(--color-white-rgb))]"
+                  className="flex items-center justify-center gap-[var(--contact-button-gap)] w-full bg-[rgb(var(--color-zinc-900-rgb))] text-[rgb(var(--color-white-rgb))] font-bold text-[length:var(--size-text-sm)] sm:text-[length:var(--size-text-base)] py-[var(--contact-button-padding-y)] px-[var(--contact-button-padding-x)] transition-all duration-200 ease-out tracking-wider border border-[rgb(var(--color-zinc-700-rgb))] hover:scale-105 hover:drop-shadow-[var(--shadow-glow-white-strong)] hover:border-[rgb(var(--color-white-rgb))]"
                 >
                   {button.icon}
                   <span>{button.label}</span>
@@ -142,7 +142,7 @@ export default function Contact() {
         </div>
 
         {/* Social Links */}
-        <p className="text-center text-[rgb(var(--color-gray-400-rgb))] mb-[var(--space-4)] text-[length:var(--section-subtitle-size)]">
+        <p className="text-center text-[rgb(var(--color-gray-400-rgb))] mb-[var(--space-4)] text-[length:var(--contact-label-size)]">
           Seguici su
         </p>
         <div className="flex justify-center gap-[var(--contact-social-gap)]">
@@ -150,7 +150,7 @@ export default function Contact() {
             href="https://www.facebook.com/pinksizefloyd"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[rgb(var(--color-gray-400-rgb))] hover:text-[rgb(var(--color-white-rgb))] transition-colors"
+            className="text-[rgb(var(--color-gray-400-rgb))] hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)] transition-colors"
             aria-label="Facebook"
           >
             <svg
@@ -165,7 +165,7 @@ export default function Contact() {
             href="https://www.instagram.com/pinksizefloyd"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[rgb(var(--color-gray-400-rgb))] hover:text-[rgb(var(--color-white-rgb))] transition-colors"
+            className="text-[rgb(var(--color-gray-400-rgb))] hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)] transition-colors"
             aria-label="Instagram"
           >
             <svg
@@ -180,7 +180,7 @@ export default function Contact() {
             href="https://www.youtube.com/@pinksizefloyd"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[rgb(var(--color-gray-400-rgb))] hover:text-[rgb(var(--color-white-rgb))] transition-colors"
+            className="text-[rgb(var(--color-gray-400-rgb))] hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)] transition-colors"
             aria-label="YouTube"
           >
             <svg

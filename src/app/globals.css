@@ -112,8 +112,8 @@
   --hero-logo-height-md: 6rem;
   --hero-logo-height-lg: 5rem;
   --hero-logo-margin-right: var(--space-14);
-  --hero-tribute-height: 3rem;
-  --hero-tribute-height-md: 5rem;
+  --hero-tribute-height: 3.5rem;
+  --hero-tribute-height-md: 6.5rem;
   --hero-tribute-height-lg: var(--space-27);
   --hero-tribute-margin-top: var(--space-3);
   --hero-tribute-margin-top-md: var(--space-5);
@@ -169,10 +169,153 @@
   --contact-button-stack-margin-bottom: var(--space-12);
   --contact-social-gap: var(--space-6);
   --contact-social-icon: 2rem;
+  --contact-label-size: var(--size-text-3xl);
 
   /* Footer */
   --footer-padding-y: var(--space-2);
   --footer-text-size: var(--size-text-lg);
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --section-padding-y: var(--space-12);
+    --section-title-size: var(--size-text-4xl);
+    --section-title-size-lg: var(--size-text-6xl);
+    --section-subtitle-size: var(--size-text-xl);
+    --body-text-lg: var(--size-text-2xl);
+
+    --nav-padding: var(--space-6);
+    --nav-container-padding-x: var(--space-6);
+    --nav-link-size: var(--size-text-xl);
+    --nav-logo-gap: var(--space-16);
+    --nav-logo-size: 4.25rem;
+
+    --hero-offset: -4rem;
+    --hero-offset-md: -5rem;
+    --hero-logo-height: 3.25rem;
+    --hero-logo-height-md: 4.5rem;
+    --hero-logo-height-lg: 4.25rem;
+    --hero-tribute-height: 2.5rem;
+    --hero-tribute-height-md: 4rem;
+    --hero-tribute-height-lg: var(--space-20);
+    --hero-scroll-size: 1.75rem;
+
+    --bio-member-gap: var(--space-6);
+    --bio-member-gap-md: var(--space-8);
+    --bio-member-photo: 7.5rem;
+    --bio-member-photo-md: 9.5rem;
+    --bio-parallax-height: 20rem;
+    --bio-parallax-height-md: 36rem;
+
+    --events-row-gap: var(--space-8);
+    --events-date-size: 3rem;
+    --events-date-day-size: var(--size-text-3xl);
+    --events-venue-size: var(--size-text-2xl);
+    --events-location-size: var(--size-text-xl);
+    --events-row-max-width: 56rem;
+    --events-venue-max-width: 26rem;
+    --events-location-max-width: 32rem;
+
+    --video-grid-gap: var(--space-5);
+    --video-grid-gap-md: var(--space-6);
+    --video-modal-padding: var(--space-3);
+    --video-modal-padding-lg: var(--space-6);
+
+    --contact-button-padding-y: var(--space-3);
+    --contact-button-padding-x: var(--space-6);
+    --contact-button-stack-gap: var(--space-3);
+    --contact-social-gap: var(--space-5);
+    --contact-social-icon: 1.75rem;
+    --contact-label-size: var(--size-text-3xl);
+
+    --footer-text-size: var(--size-text-base);
+  }
+}
+
+@media (max-width: 830px) {
+  :root {
+    --section-padding-x: var(--space-3);
+    --section-padding-y: var(--space-10);
+    --section-title-size: var(--size-text-4xl);
+    --section-title-size-lg: var(--size-text-6xl);
+    --section-subtitle-size: var(--size-text-lg);
+    --body-text-lg: var(--size-text-xl);
+
+    --nav-padding: var(--space-4);
+    --nav-padding-scrolled: var(--space-2);
+    --nav-container-padding-x: var(--space-4);
+    --nav-logo-size: 3.5rem;
+    --nav-logo-size-scrolled: 1.75rem;
+    --nav-link-size-mobile: var(--size-text-base);
+
+    --hero-offset: -3rem;
+    --hero-offset-md: -3.5rem;
+    --hero-logo-gap: var(--space-3);
+    --hero-logo-gap-md: var(--space-4);
+    --hero-logo-height: 2.75rem;
+    --hero-logo-height-md: 3.75rem;
+    --hero-logo-height-lg: 3.5rem;
+    --hero-logo-margin-right: var(--space-8);
+    --hero-tribute-height: 2rem;
+    --hero-tribute-height-md: 3rem;
+    --hero-tribute-height-lg: var(--space-16);
+    --hero-scroll-size: 1.5rem;
+    --hero-scroll-bottom: var(--space-6);
+
+    --bio-member-photo: 6.5rem;
+    --bio-member-photo-md: 8rem;
+    --bio-member-name-size: var(--size-text-lg);
+    --bio-member-name-size-md: var(--size-text-xl);
+    --bio-member-role-size: var(--size-text-base);
+    --bio-member-role-size-md: var(--size-text-lg);
+    --bio-parallax-height: 16rem;
+    --bio-parallax-height-md: 28rem;
+
+    --events-row-gap: var(--space-6);
+    --events-row-padding: var(--space-2);
+    --events-date-size: 3rem;
+    --events-link-column: 32px;
+    --events-date-month-size: var(--size-text-xs);
+    --events-date-day-size: var(--size-text-3xl);
+    --events-venue-size: var(--size-text-xl);
+    --events-location-size: var(--size-text-lg);
+
+    --video-card-title-size: var(--size-text-xs);
+    --video-card-title-size-md: var(--size-text-sm);
+
+    --footer-text-size: var(--size-text-sm);
+    --video-modal-title-size: var(--size-text-base);
+    --video-modal-title-size-md: var(--size-text-lg);
+
+    --contact-button-stack-gap: var(--space-3);
+    --contact-button-stack-margin-bottom: var(--space-10);
+    --contact-social-gap: var(--space-4);
+    --contact-social-icon: 1.5rem;
+    --contact-label-size: var(--size-text-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-padding-x: var(--space-2);
+    --section-padding-y: var(--space-8);
+    --section-title-size: var(--size-text-3xl);
+    --section-title-size-lg: var(--size-text-4xl);
+    --section-subtitle-size: var(--size-text-base);
+    --body-text-lg: var(--size-text-lg);
+
+    --hero-logo-height: 2.25rem;
+    --hero-logo-height-md: 3rem;
+    --hero-logo-height-lg: 2.75rem;
+    --hero-tribute-height: 1.6rem;
+    --hero-tribute-height-md: 2.5rem;
+    --hero-tribute-height-lg: var(--space-14);
+
+    --events-date-size: 2.75rem;
+    --events-date-day-size: var(--size-text-2xl);
+    --events-venue-size: var(--size-text-lg);
+    --events-location-size: var(--size-text-base);
+  }
 }
 
 @theme inline {
@@ -223,5 +366,32 @@ html {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Hero layout defaults (full-viewport on typical screens) */
+.hero-section {
+  min-height: 100svh;
+}
+
+.hero-content {
+  min-height: 100svh;
+}
+
+/* Hero background image - default (desktop/landscape) */
+.hero-edge-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--color-black-rgb) / 0.8) 0%,
+    rgb(var(--color-black-rgb) / 0) 22%,
+    rgb(var(--color-black-rgb) / 0) 78%,
+    rgb(var(--color-black-rgb) / 0.8) 100%
+  );
+}
+
+/* Hide vignette below 1400px */
+@media (max-width: 1399px) {
+  .hero-vignette {
+    display: none;
   }
 }
