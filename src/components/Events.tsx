@@ -3,33 +3,6 @@
 import { useEffect, useState } from "react";
 import { Event, getUpcomingEvents } from "@/lib/supabase";
 
-// Fallback events for when Supabase is not configured
-const fallbackEvents: Event[] = [
-  {
-    id: 1,
-    date: "2026-01-29",
-    venue: "THE GAMMON",
-    location: "Roveredo in Piano (PN) - Via Pionieri dell'Aria, 104",
-    is_quartet: true,
-  },
-  {
-    id: 2,
-    date: "2026-01-31",
-    venue: "CLUB IL GIARDINO",
-    location: "Lugagnano (VR) - Via Cao del Pra, 82",
-    link: "https://example.com/event2",
-    is_the_wall: true,
-  },
-  {
-    id: 3,
-    date: "2026-02-13",
-    venue: "CASTELBRANDO",
-    location: "Cison di Valmarino (TV) - Via Brando, 29",
-    link: "https://example.com/event3",
-    is_dark_side: true,
-  },
-];
-
 function getDateParts(dateString: string): {
   day: number;
   monthShort: string;
@@ -92,16 +65,10 @@ export default function Events() {
     async function fetchEvents() {
       try {
         const data = await getUpcomingEvents();
-        if (data.length > 0) {
-          setEvents(data);
-        } else {
-          // Use fallback events if no events from Supabase
-          setEvents(fallbackEvents);
-        }
+        setEvents(data);
       } catch (error) {
         console.error("Error fetching events:", error);
-        // Use fallback events on error
-        setEvents(fallbackEvents);
+        setEvents([]);
       } finally {
         setLoading(false);
       }
@@ -178,7 +145,7 @@ export default function Events() {
                     {/* Mobile: Venue + Location stacked | Desktop: separate cells */}
                     <div className="sm:contents flex flex-col justify-start flex-1 min-w-0 pl-3 sm:pl-0 leading-tight">
                       {/* Venue */}
-                      <div className="sm:table-cell sm:align-middle sm:pl-[calc(var(--events-row-gap)*0.4)] sm:pr-[var(--events-row-gap)] sm:py-[var(--events-row-padding)] text-[rgb(var(--color-white-rgb))] font-bold text-[length:var(--events-venue-size)] max-w-full sm:max-w-[var(--events-venue-max-width)] sm:truncate truncate text-left">
+                      <div className="sm:table-cell sm:align-middle sm:pl-[calc(var(--events-row-gap)*0.4)] sm:pr-[var(--events-row-gap)] sm:py-[var(--events-row-padding)] text-[rgb(var(--color-white-rgb))] font-bold text-[length:var(--events-venue-size)] max-w-full sm:max-w-[var(--events-venue-max-width)] sm:truncate truncate text-left uppercase">
                         {event.venue}
                       </div>
 

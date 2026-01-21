@@ -2,59 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-
-interface Video {
-  id: string;
-  youtubeId: string;
-  title: string;
-  year?: string;
-  badge?: "LIVE" | "PROMO" | "STUDIO";
-}
-
-const videos: Video[] = [
-  {
-    id: "1",
-    youtubeId: "6svKc5kXI58",
-    title: "The Wall",
-    year: "2025",
-    badge: "PROMO",
-  },
-  {
-    id: "2",
-    youtubeId: "ml7quVPEkvc",
-    title: "Promo",
-    year: "2024",
-    badge: "PROMO",
-  },
-  {
-    id: "3",
-    youtubeId: "hjfglxyAsiM",
-    title: "Sheep",
-    year: "2020",
-    badge: "LIVE",
-  },
-  {
-    id: "4",
-    youtubeId: "7NaM9z0A3eE",
-    title: "Pigs (Three Different Ones)",
-    year: "2020",
-    badge: "LIVE",
-  },
-  {
-    id: "5",
-    youtubeId: "glEkPRz9Cz4",
-    title: "Dogs",
-    year: "2020",
-    badge: "LIVE",
-  },
-  {
-    id: "6",
-    youtubeId: "EHYN6xJ-Te4",
-    title: "Careful with that Axe, Eugene",
-    year: "2020",
-    badge: "LIVE",
-  },
-];
+import { getVideos, Video } from "@/lib/supabase";
 
 // VHS Tracking effect overlay
 function VHSOverlay() {
@@ -330,6 +278,45 @@ function VideoModal({ video, onClose }: { video: Video; onClose: () => void }) {
 
 export default function Videos() {
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
+  const [videos, setVideos] = useState<Video[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function fetchVideos() {
+      try {
+        const data = await getVideos();
+        if (isMounted) {
+          setVideos(data);
+        }
+      } catch (error) {
+        console.error("Error fetching videos:", error);
+        if (isMounted) {
+          setVideos([]);
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    fetchVideos();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (
+      selectedVideo &&
+      !videos.some((video) => video.id === selectedVideo.id)
+    ) {
+      setSelectedVideo(null);
+    }
+  }, [videos, selectedVideo]);
 
   return (
     <section
@@ -346,17 +333,26 @@ export default function Videos() {
           VIDEO
         </h2>
 
-        {/* Video Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-[var(--video-grid-gap)] md:gap-[var(--video-grid-gap-md)]">
-          {videos.map((video) => (
-            <RetroTV
-              key={video.id}
-              video={video}
-              isActive={selectedVideo?.id === video.id}
-              onClick={() => setSelectedVideo(video)}
-            />
-          ))}
-        </div>
+        {loading ? (
+          <div className="flex justify-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[rgb(var(--color-white-rgb))]" />
+          </div>
+        ) : videos.length === 0 ? (
+          <p className="text-center text-[rgb(var(--color-gray-400-rgb))] text-[length:var(--body-text-lg)]">
+            Nessun video disponibile
+          </p>
+        ) : (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-[var(--video-grid-gap)] md:gap-[var(--video-grid-gap-md)]">
+            {videos.map((video) => (
+              <RetroTV
+                key={video.id}
+                video={video}
+                isActive={selectedVideo?.id === video.id}
+                onClick={() => setSelectedVideo(video)}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Video Modal */}

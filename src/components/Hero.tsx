@@ -29,9 +29,9 @@ export default function Hero() {
         <picture>
           <source media="(max-width: 767px)" srcSet={mobileProps.srcSet} />
           <source media="(min-width: 768px)" srcSet={desktopProps.srcSet} />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             {...desktopProps}
+            alt="Concert background"
             className="absolute inset-0 w-full h-full object-cover object-center brightness-110 contrast-110"
           />
         </picture>

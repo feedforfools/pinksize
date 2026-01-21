@@ -29,8 +29,34 @@ Open [http://localhost:3000](http://localhost:3000).
 - Update images in `public/images/` to customize the look.
 - Content lives in `src/app` and `src/components`.
 
+## Supabase
+
+Create a Supabase project and add these environment variables to your `.env.local`:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+Required tables:
+
+### `events`
+
+- `id` (int8, primary key)
+- `date` (date)
+- `venue` (text)
+- `location` (text)
+- `link` (text, nullable)
+- `created_at` (timestamp with time zone, default now())
+
+### `videos`
+
+- `id` (int8, primary key)
+- `youtube_id` (text)
+- `title` (text)
+- `year` (text, nullable)
+- `badge` (text, nullable) — expected values: `LIVE`, `PROMO`, `STUDIO`
+- `created_at` (timestamp with time zone, default now())
+
 ## Todo
-- Setup Supabase integration for events management and videos
 - Setup simple backend for inserting events to the DB via Telegram bot
 
 ## License

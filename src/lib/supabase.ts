@@ -17,25 +17,31 @@ export interface Event {
   date: string;
   venue: string;
   location: string;
-  link?: string;
-  is_quartet?: boolean;
-  is_the_wall?: boolean;
-  is_dark_side?: boolean;
-  created_at?: string;
+  link?: string | null;
+  created_at: string;
+}
+
+export interface Video {
+  id: number;
+  youtubeId: string;
+  title: string;
+  year?: string | null;
+  badge?: "LIVE" | "PROMO" | "STUDIO" | null;
+  created_at?: string | null;
 }
 
 export async function getUpcomingEvents(): Promise<Event[]> {
   if (!supabase) {
     // Return empty array if Supabase is not configured
-    // The Events component will use fallback data
     return [];
   }
 
   const { data, error } = await supabase
-    .from("events")
+    .from("pinksize_events")
     .select("*")
     .gte("date", new Date().toISOString().split("T")[0])
-    .order("date", { ascending: true });
+    .order("date", { ascending: true })
+    .limit(4);
 
   if (error) {
     console.error("Error fetching events:", error);
@@ -43,4 +49,41 @@ export async function getUpcomingEvents(): Promise<Event[]> {
   }
 
   return data || [];
+}
+
+type VideoRow = {
+  id: number;
+  youtube_id: string;
+  title: string;
+  year?: string | null;
+  badge?: "LIVE" | "PROMO" | "STUDIO" | null;
+  created_at?: string | null;
+};
+
+export async function getVideos(): Promise<Video[]> {
+  if (!supabase) {
+    return [];
+  }
+
+  const { data, error } = await supabase
+    .from("pinksize_videos")
+    .select("id, youtube_id, title, year, badge, created_at")
+    .order("id", { ascending: true })
+    .limit(6);
+
+  if (error) {
+    console.error("Error fetching videos:", error);
+    return [];
+  }
+
+  return (
+    data?.map((video: VideoRow) => ({
+      id: video.id,
+      youtubeId: video.youtube_id,
+      title: video.title,
+      year: video.year ?? null,
+      badge: video.badge ?? null,
+      created_at: video.created_at ?? null,
+    })) || []
+  );
 }
