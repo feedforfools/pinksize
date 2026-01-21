@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -36,6 +38,8 @@ export default function RootLayout({
     <html lang="it" className="scroll-smooth">
       <body className="font-sans antialiased bg-[rgb(var(--color-black-rgb))]">
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
