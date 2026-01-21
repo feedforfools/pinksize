@@ -1,26 +1,40 @@
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 
 export default function Hero() {
+  const common = {
+    alt: "Concert background",
+    sizes: "100vw",
+    priority: true,
+  };
+
+  const { props: desktopProps } = getImageProps({
+    ...common,
+    src: "/images/hero-bg.jpg",
+    width: 2400,
+    height: 1350,
+  });
+
+  const { props: mobileProps } = getImageProps({
+    ...common,
+    src: "/images/hero-bg-mobile.jpg",
+    width: 1080,
+    height: 1920,
+  });
+
   return (
     <section className="hero-section relative w-full overflow-hidden">
       {/* Background image container */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Desktop/landscape image */}
-        <Image
-          src="/images/hero-bg.jpg"
-          alt="Concert background"
-          fill
-          priority
-          className="hidden md:block object-cover object-center brightness-110 contrast-110"
-          sizes="100vw"
-        />
-        {/* Mobile/portrait image */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/hero-bg-mobile.jpg"
-          alt="Concert background"
-          className="block md:hidden absolute inset-0 w-full h-full object-cover object-center brightness-110 contrast-110"
-        />
+        {/* Art-directed image (desktop + mobile) with Next optimization */}
+        <picture>
+          <source media="(max-width: 767px)" srcSet={mobileProps.srcSet} />
+          <source media="(min-width: 768px)" srcSet={desktopProps.srcSet} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            {...desktopProps}
+            className="absolute inset-0 w-full h-full object-cover object-center brightness-110 contrast-110"
+          />
+        </picture>
         {/* Gradient overlay on top of image */}
         <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--color-black-rgb))] via-[rgb(var(--color-red-950-rgb)/0.4)] to-[rgb(var(--color-black-rgb))]" />
         {/* Vignette overlay for darkened borders */}
