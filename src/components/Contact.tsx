@@ -41,8 +41,8 @@ export default function Contact() {
     {
       id: "email",
       label: "SCRIVI UNA EMAIL",
-      revealedLabel: "info@pinksize.it",
-      href: "mailto:info@pinksize.it",
+      revealedLabel: "pinksizemusic@gmail.com",
+      href: "mailto:pinksizemusic@gmail.com",
       icon: (
         <svg
           className="w-5 h-5"
