@@ -3,21 +3,25 @@ const bandMembers = [
     name: "Matteo Ballarin",
     role: "Chitarra e Voce",
     image: "/images/members/matteo.jpg",
+    instagram: "https://www.instagram.com/teoballa/",
   },
   {
     name: "Andrea Ghion",
     role: "Basso e Voce",
     image: "/images/members/andrea.jpg",
+    instagram: "https://www.instagram.com/andrea.ghion/",
   },
   {
     name: "Denis Ronchese",
     role: "Tastiere e Voce",
     image: "/images/members/denis.jpg",
+    instagram: "https://www.instagram.com/denisron.keys/",
   },
   {
     name: "Manuel Smaniotto",
     role: "Batteria e Percussioni",
     image: "/images/members/manuel.jpg",
+    instagram: "https://www.instagram.com/manuelsmaniotto/",
   },
 ];
 
@@ -48,14 +52,20 @@ export default function Biography() {
           {bandMembers.map((member) => (
             <div key={member.name} className="text-center">
               {/* Circular Photo Placeholder */}
-              <div className="relative mx-auto w-20 h-20 sm:w-[var(--bio-member-photo)] sm:h-[var(--bio-member-photo)] md:w-[var(--bio-member-photo-md)] md:h-[var(--bio-member-photo-md)] mb-2 sm:mb-[var(--bio-member-photo-margin-bottom)]">
-                <div className="absolute inset-0 rounded-full border-2 sm:border-5 border-[rgb(var(--color-white-rgb))] overflow-hidden">
-                  <div
-                    className="w-full h-full bg-cover bg-center"
+              <a
+                href={member.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Apri Instagram di ${member.name}`}
+                className="relative mx-auto block w-20 h-20 sm:w-[var(--bio-member-photo)] sm:h-[var(--bio-member-photo)] md:w-[var(--bio-member-photo-md)] md:h-[var(--bio-member-photo-md)] mb-2 sm:mb-[var(--bio-member-photo-margin-bottom)] hover:scale-105 transition-transform duration-200 ease-out"
+              >
+                <span className="absolute inset-0 rounded-full border-2 sm:border-5 border-[rgb(var(--color-white-rgb))] overflow-hidden">
+                  <span
+                    className="block w-full h-full bg-cover bg-center"
                     style={{ backgroundImage: `url(${member.image})` }}
                   />
-                </div>
-              </div>
+                </span>
+              </a>
               <h3 className="text-[rgb(var(--color-white-rgb))] font-bold text-sm sm:text-[length:var(--bio-member-name-size)] md:text-[length:var(--bio-member-name-size-md)]">
                 {member.name}
               </h3>
