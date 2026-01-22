@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useState, useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
@@ -11,10 +12,17 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const langDropdownRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const locale = useLocale();
   const t = useTranslations("nav");
   const otherLocale = locale === "it" ? "en" : "it";
   const sectionHref = (sectionId: string) => `/${locale}#${sectionId}`;
+
+  const handleLocaleSwitch = (targetLocale: string) => {
+    // Read the hash at click time to ensure it's current
+    const currentHash = window.location.hash || "";
+    router.push(`/${targetLocale}${currentHash}`);
+  };
 
   const languages = [
     {
@@ -186,10 +194,12 @@ export default function Navigation() {
                 {isLangOpen && (
                   <div className="nav-locale-dropdown">
                     {languages.map((lang) => (
-                      <Link
+                      <button
                         key={lang.code}
-                        href={`/${lang.code}`}
-                        onClick={() => setIsLangOpen(false)}
+                        onClick={() => {
+                          setIsLangOpen(false);
+                          handleLocaleSwitch(lang.code);
+                        }}
                         className={`nav-locale-item ${
                           lang.code === locale ? "nav-locale-item-active" : ""
                         }`}
@@ -205,7 +215,7 @@ export default function Navigation() {
                         <span className="nav-locale-item-label">
                           {lang.name}
                         </span>
-                      </Link>
+                      </button>
                     ))}
                   </div>
                 )}
@@ -338,8 +348,8 @@ export default function Navigation() {
                   </svg>
                 </a>
                 <div className="nav-locale-separator" />
-                <Link
-                  href={`/${otherLocale}`}
+                <button
+                  onClick={() => handleLocaleSwitch(otherLocale)}
                   className="nav-locale-mobile-link"
                   aria-label={t("switchLanguage")}
                 >
@@ -351,7 +361,7 @@ export default function Navigation() {
                     className="nav-locale-flag"
                     unoptimized
                   />
-                </Link>
+                </button>
               </div>
             </div>
           </div>
