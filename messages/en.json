@@ -1,5 +1,47 @@
 {
   "app": {
     "name": "Pink Size"
+  },
+  "nav": {
+    "bio": "BIOGRAPHY",
+    "videos": "VIDEO",
+    "live": "LIVE",
+    "contact": "CONTACT",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "bio": {
+    "title": "BIOGRAPHY",
+    "textLine1": "Since 2005 we have been moving you with passion, bringing the unmistakable sounds of Pink Floyd in a full 360-degree experience.",
+    "textLine2": "Our setlist spans the entire discography, from the psychedelia of Astronomy Domine and Echoes, through the evolution of the '70s (Atom Heart Mother, Dark Side of the Moon, Wish You Were Here, Animals and The Wall), up to their final studio album.",
+    "instagramLabel": "Open {name} on Instagram",
+    "roles": {
+      "guitarVocals": "Guitar and Vocals",
+      "bassVocals": "Bass and Vocals",
+      "keysVocals": "Keyboards and Vocals",
+      "drumsPercussion": "Drums and Percussion"
+    }
+  },
+  "events": {
+    "title": "UPCOMING SHOWS",
+    "empty": "No events scheduled",
+    "monthsShort": ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+  },
+  "videos": {
+    "title": "VIDEOS",
+    "empty": "No videos available"
+  },
+  "contact": {
+    "title": "CONTACT",
+    "infoBooking": "Info & Booking",
+    "followUs": "Follow us",
+    "buttons": {
+      "email": "WRITE AN EMAIL",
+      "callMatteo": "CALL MATTEO",
+      "callAndrea": "CALL ANDREA"
+    }
+  },
+  "footer": {
+    "copyright": "Copyright © {year} Pink Size. All rights reserved."
   }
 }

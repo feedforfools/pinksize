@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const locale = useLocale();
+  const t = useTranslations("nav");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,13 +37,13 @@ export default function Navigation() {
               href="#bio"
               className="text-[rgb(var(--color-white-rgb))] text-[length:var(--nav-link-size)] font-bold tracking-tight inline-block transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
             >
-              BIOGRAFIA
+              {t("bio")}
             </Link>
             <Link
               href="#videos"
               className="text-[rgb(var(--color-white-rgb))] text-[length:var(--nav-link-size)] font-bold tracking-tight inline-block transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
             >
-              VIDEO
+              {t("videos")}
             </Link>
           </div>
 
@@ -71,13 +72,13 @@ export default function Navigation() {
               href="#live"
               className="text-[rgb(var(--color-white-rgb))] text-[length:var(--nav-link-size)] font-bold tracking-tight inline-block transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
             >
-              LIVE
+              {t("live")}
             </Link>
             <Link
               href="#contact"
               className="text-[rgb(var(--color-white-rgb))] text-[length:var(--nav-link-size)] font-bold tracking-tight inline-block transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
             >
-              CONTATTI
+              {t("contact")}
             </Link>
           </div>
 
@@ -149,7 +150,7 @@ export default function Navigation() {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-[rgb(var(--color-white-rgb))] p-2"
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={isMenuOpen ? t("closeMenu") : t("openMenu")}
           >
             <svg
               className="w-6 h-6"
@@ -185,28 +186,28 @@ export default function Navigation() {
                 className="text-[rgb(var(--color-white-rgb))] text-[length:calc(var(--nav-link-size-mobile)*1.4)] font-bold tracking-tight inline-block w-full text-center transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
                 onClick={() => setIsMenuOpen(false)}
               >
-                BIOGRAFIA
+                {t("bio")}
               </Link>
               <Link
                 href="#videos"
                 className="text-[rgb(var(--color-white-rgb))] text-[length:calc(var(--nav-link-size-mobile)*1.4)] font-bold tracking-tight inline-block w-full text-center transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
                 onClick={() => setIsMenuOpen(false)}
               >
-                VIDEO
+                {t("videos")}
               </Link>
               <Link
                 href="#live"
                 className="text-[rgb(var(--color-white-rgb))] text-[length:calc(var(--nav-link-size-mobile)*1.4)] font-bold tracking-tight inline-block w-full text-center transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
                 onClick={() => setIsMenuOpen(false)}
               >
-                LIVE
+                {t("live")}
               </Link>
               <Link
                 href="#contact"
                 className="text-[rgb(var(--color-white-rgb))] text-[length:calc(var(--nav-link-size-mobile)*1.4)] font-bold tracking-tight inline-block w-full text-center transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
                 onClick={() => setIsMenuOpen(false)}
               >
-                CONTATTI
+                {t("contact")}
               </Link>
               <div className="flex items-center justify-center gap-[var(--nav-social-gap)] pt-2">
                 <a
