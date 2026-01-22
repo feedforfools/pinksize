@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 const bandMembers = [
   {
@@ -27,8 +27,8 @@ const bandMembers = [
   },
 ];
 
-export default function Biography() {
-  const t = useTranslations("bio");
+export default async function Biography() {
+  const t = await getTranslations("bio");
 
   return (
     <section
