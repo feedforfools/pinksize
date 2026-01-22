@@ -105,7 +105,7 @@ export default function Contact() {
 
   return (
     <section
-      id="contatti"
+      id="contact"
       className="bg-[rgb(var(--color-black-rgb))] text-[rgb(var(--color-white-rgb))] py-[var(--section-padding-y)]"
     >
       <div className="max-w-3xl mx-auto px-[var(--section-padding-x)]">

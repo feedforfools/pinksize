@@ -90,7 +90,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <div className="hero-scroll absolute bottom-[var(--hero-scroll-bottom)] left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
-        <a href="#biografia" className="text-[rgb(var(--color-white-rgb))]">
+        <a href="#bio" className="text-[rgb(var(--color-white-rgb))]">
           <svg
             className="w-[var(--hero-scroll-size)] h-[var(--hero-scroll-size)]"
             fill="none"

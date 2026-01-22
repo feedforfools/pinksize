@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useLocale } from "next-intl";
 import { useState, useEffect } from "react";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const locale = useLocale();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,13 +33,13 @@ export default function Navigation() {
           {/* Left Navigation Items */}
           <div className="flex items-center justify-end gap-[var(--nav-link-gap)]">
             <Link
-              href="#biografia"
+              href="#bio"
               className="text-[rgb(var(--color-white-rgb))] text-[length:var(--nav-link-size)] font-bold tracking-tight inline-block transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
             >
               BIOGRAFIA
             </Link>
             <Link
-              href="#video"
+              href="#videos"
               className="text-[rgb(var(--color-white-rgb))] text-[length:var(--nav-link-size)] font-bold tracking-tight inline-block transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
             >
               VIDEO
@@ -46,7 +48,7 @@ export default function Navigation() {
 
           {/* Logo */}
           <Link
-            href="/"
+            href={`/${locale}`}
             className="flex items-center mx-[var(--nav-logo-gap)] transition-all duration-200 ease-out hover:drop-shadow-[var(--shadow-glow-white-logo)]"
           >
             <Image
@@ -72,7 +74,7 @@ export default function Navigation() {
               LIVE
             </Link>
             <Link
-              href="#contatti"
+              href="#contact"
               className="text-[rgb(var(--color-white-rgb))] text-[length:var(--nav-link-size)] font-bold tracking-tight inline-block transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
             >
               CONTATTI
@@ -179,14 +181,14 @@ export default function Navigation() {
           <div className="lg:hidden pb-4">
             <div className="flex flex-col items-center text-center space-y-4">
               <Link
-                href="#biografia"
+                href="#bio"
                 className="text-[rgb(var(--color-white-rgb))] text-[length:calc(var(--nav-link-size-mobile)*1.4)] font-bold tracking-tight inline-block w-full text-center transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 BIOGRAFIA
               </Link>
               <Link
-                href="#video"
+                href="#videos"
                 className="text-[rgb(var(--color-white-rgb))] text-[length:calc(var(--nav-link-size-mobile)*1.4)] font-bold tracking-tight inline-block w-full text-center transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -200,7 +202,7 @@ export default function Navigation() {
                 LIVE
               </Link>
               <Link
-                href="#contatti"
+                href="#contact"
                 className="text-[rgb(var(--color-white-rgb))] text-[length:calc(var(--nav-link-size-mobile)*1.4)] font-bold tracking-tight inline-block w-full text-center transition-all duration-200 ease-out hover:scale-105 hover:text-[rgb(var(--color-white-rgb))] hover:drop-shadow-[var(--shadow-glow-white-strong)]"
                 onClick={() => setIsMenuOpen(false)}
               >

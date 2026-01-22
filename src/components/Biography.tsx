@@ -28,7 +28,7 @@ const bandMembers = [
 export default function Biography() {
   return (
     <section
-      id="biografia"
+      id="bio"
       className="bg-[rgb(var(--color-black-rgb))] text-[rgb(var(--color-white-rgb))]"
     >
       {/* Biography Content */}

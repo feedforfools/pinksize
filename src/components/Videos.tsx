@@ -320,7 +320,7 @@ export default function Videos() {
 
   return (
     <section
-      id="video"
+      id="videos"
       className="relative bg-[rgb(var(--color-black-rgb))] text-[rgb(var(--color-white-rgb))] py-[var(--section-padding-y)] overflow-hidden"
     >
       {/* Ambient background */}
