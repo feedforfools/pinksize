@@ -37,7 +37,6 @@ export default function Navigation() {
     },
   ];
   const currentLang = languages.find((l) => l.code === locale)!;
-  const otherLang = languages.find((l) => l.code === otherLocale)!;
 
   useEffect(() => {
     const handleScroll = () => {

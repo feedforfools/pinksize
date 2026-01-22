@@ -1,15 +1,14 @@
 "use client";
 
 import Image, { getImageProps } from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useCallback } from "react";
 
 export default function Hero() {
   const [bgLoaded, setBgLoaded] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
 
-  // Handle cached images that may already be loaded
-  useEffect(() => {
-    if (imgRef.current?.complete) {
+  // Callback ref to handle cached images that may already be loaded
+  const imgRefCallback = useCallback((node: HTMLImageElement | null) => {
+    if (node?.complete) {
       setBgLoaded(true);
     }
   }, []);
@@ -43,7 +42,7 @@ export default function Hero() {
           <source media="(max-width: 767px)" srcSet={mobileProps.srcSet} />
           <source media="(min-width: 768px)" srcSet={desktopProps.srcSet} />
           <img
-            ref={imgRef}
+            ref={imgRefCallback}
             {...desktopProps}
             alt="Concert background"
             className="absolute inset-0 w-full h-full object-cover object-center brightness-110 contrast-110"
