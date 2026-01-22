@@ -1,28 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Event, getUpcomingEvents } from "@/lib/supabase";
 
-function getDateParts(dateString: string): {
+function getDateParts(
+  dateString: string,
+  monthsShort: string[],
+): {
   day: number;
   monthShort: string;
 } {
   const date = new Date(dateString);
   const day = date.getDate();
-  const monthsShort = [
-    "GEN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAG",
-    "GIU",
-    "LUG",
-    "AGO",
-    "SET",
-    "OTT",
-    "NOV",
-    "DIC",
-  ];
   return {
     day,
     monthShort: monthsShort[date.getMonth()],
@@ -30,8 +20,14 @@ function getDateParts(dateString: string): {
 }
 
 // Calendar-style date component
-function CalendarDate({ dateString }: { dateString: string }) {
-  const { day, monthShort } = getDateParts(dateString);
+function CalendarDate({
+  dateString,
+  monthsShort,
+}: {
+  dateString: string;
+  monthsShort: string[];
+}) {
+  const { day, monthShort } = getDateParts(dateString, monthsShort);
 
   return (
     <div className="flex flex-col items-center justify-center w-[var(--events-date-size)] h-[var(--events-date-size)] bg-[rgb(var(--color-white-rgb))] shadow-lg overflow-hidden">
@@ -58,8 +54,10 @@ function CalendarDate({ dateString }: { dateString: string }) {
 }
 
 export default function Events() {
+  const t = useTranslations("events");
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
+  const monthsShort = t.raw("monthsShort") as string[];
 
   useEffect(() => {
     async function fetchEvents() {
@@ -109,7 +107,7 @@ export default function Events() {
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-[var(--section-padding-x)] py-[var(--section-padding-y)]">
         <h2 className="text-[length:var(--section-title-size)] md:text-[length:var(--section-title-size-lg)] font-bold text-center text-[rgb(var(--color-white-rgb))] mb-[var(--section-title-margin-bottom)] tracking-tight">
-          PROSSIMI EVENTI
+          {t("title")}
         </h2>
         {loading ? (
           <div className="flex justify-center">
@@ -117,7 +115,7 @@ export default function Events() {
           </div>
         ) : events.length === 0 ? (
           <p className="text-center text-[rgb(var(--color-gray-400-rgb))] text-[length:var(--body-text-lg)]">
-            Nessun evento in programma
+            {t("empty")}
           </p>
         ) : (
           <div className="flex justify-center">
@@ -138,7 +136,10 @@ export default function Events() {
                     {/* Calendar Date */}
                     <div className="sm:table-cell sm:align-middle sm:pr-[calc(var(--events-row-gap)*0.6)] sm:py-[var(--events-row-padding)] flex-shrink-0">
                       <div className="flex-shrink-0">
-                        <CalendarDate dateString={event.date} />
+                        <CalendarDate
+                          dateString={event.date}
+                          monthsShort={monthsShort}
+                        />
                       </div>
                     </div>
 

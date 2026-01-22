@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { getVideos, Video } from "@/lib/supabase";
 
 // VHS Tracking effect overlay
@@ -277,6 +278,7 @@ function VideoModal({ video, onClose }: { video: Video; onClose: () => void }) {
 }
 
 export default function Videos() {
+  const t = useTranslations("videos");
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
@@ -320,7 +322,7 @@ export default function Videos() {
 
   return (
     <section
-      id="video"
+      id="videos"
       className="relative bg-[rgb(var(--color-black-rgb))] text-[rgb(var(--color-white-rgb))] py-[var(--section-padding-y)] overflow-hidden"
     >
       {/* Ambient background */}
@@ -330,7 +332,7 @@ export default function Videos() {
 
       <div className="relative max-w-7xl mx-auto px-[var(--section-padding-x)]">
         <h2 className="text-[length:var(--section-title-size)] md:text-[length:var(--section-title-size-lg)] font-bold tracking-tight mb-[var(--section-title-margin-bottom)] text-center">
-          VIDEO
+          {t("title")}
         </h2>
 
         {loading ? (
@@ -339,7 +341,7 @@ export default function Videos() {
           </div>
         ) : videos.length === 0 ? (
           <p className="text-center text-[rgb(var(--color-gray-400-rgb))] text-[length:var(--body-text-lg)]">
-            Nessun video disponibile
+            {t("empty")}
           </p>
         ) : (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-[var(--video-grid-gap)] md:gap-[var(--video-grid-gap-md)]">

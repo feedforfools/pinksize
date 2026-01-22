@@ -94,11 +94,28 @@
   --nav-link-size: var(--size-text-2xl);
   --nav-link-size-mobile: var(--size-text-sm);
   --nav-link-gap: var(--space-15);
-  --nav-logo-gap: var(--space-25);
+  --nav-logo-gap: var(--space-15);
   --nav-logo-size: 5.5rem;
   --nav-logo-size-scrolled: 2rem;
   --nav-icon-size: 1.25rem;
   --nav-social-gap: var(--space-4);
+  --nav-locale-gap: var(--space-2);
+  --nav-locale-flag-width: 1.5rem;
+  --nav-locale-flag-height: 1.125rem;
+  --nav-locale-label-size: var(--size-text-sm);
+  --nav-locale-chevron-size: 0.75rem;
+  --nav-locale-dropdown-radius: 0.5rem;
+  --nav-locale-dropdown-min-width: 10rem;
+  --nav-locale-dropdown-shadow: 0 10px 25px rgb(var(--color-black-rgb) / 0.35);
+  --nav-locale-dropdown-bg: rgb(var(--color-black-rgb) / 0.95);
+  --nav-locale-item-padding-y: 0.625rem;
+  --nav-locale-item-padding-x: var(--space-4);
+  --nav-locale-item-gap: var(--space-3);
+  --nav-locale-item-hover-bg: rgb(var(--color-white-rgb) / 0.1);
+  --nav-locale-item-active-bg: rgb(var(--color-white-rgb) / 0.05);
+  --nav-locale-item-label-size: var(--size-text-lg);
+  --nav-locale-separator-height: 1rem;
+  --nav-locale-separator-color: rgb(var(--color-white-rgb) / 0.3);
 
   /* Scroll */
   --scroll-padding-top: 64px;
@@ -230,6 +247,125 @@
 
     --footer-text-size: var(--size-text-base);
   }
+}
+
+@media (min-width: 1025px) and (max-width: 1149px) {
+  .nav-locale-label,
+  .nav-locale-chevron {
+    display: none;
+  }
+}
+
+.nav-locale-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nav-locale-gap);
+  color: rgb(var(--color-white-rgb));
+  transition: all 0.2s ease-out;
+}
+
+.nav-locale-toggle:hover {
+  filter: drop-shadow(var(--shadow-glow-white-strong));
+}
+
+.nav-locale-flag {
+  width: var(--nav-locale-flag-width);
+  height: var(--nav-locale-flag-height);
+  border-radius: 0.125rem;
+  display: block;
+}
+
+.nav-locale-label {
+  font-size: var(--nav-locale-label-size);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.nav-locale-chevron {
+  width: var(--nav-locale-chevron-size);
+  height: var(--nav-locale-chevron-size);
+  margin-left: -0.25rem;
+  transition: transform 0.2s ease-out;
+}
+
+.nav-locale-chevron-open {
+  transform: rotate(180deg);
+}
+
+.nav-locale-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--space-2);
+  background: var(--nav-locale-dropdown-bg);
+  backdrop-filter: blur(6px);
+  border-radius: var(--nav-locale-dropdown-radius);
+  overflow: hidden;
+  box-shadow: var(--nav-locale-dropdown-shadow);
+  min-width: var(--nav-locale-dropdown-min-width);
+}
+
+.nav-locale-item {
+  display: flex;
+  align-items: center;
+  gap: var(--nav-locale-item-gap);
+  padding: var(--nav-locale-item-padding-y) var(--nav-locale-item-padding-x);
+  color: rgb(var(--color-white-rgb));
+  transition: background-color 0.15s ease-out;
+}
+
+.nav-locale-item:hover {
+  background: var(--nav-locale-item-hover-bg);
+}
+
+.nav-locale-item-active {
+  background: var(--nav-locale-item-active-bg);
+}
+
+.nav-locale-item-label {
+  font-size: var(--nav-locale-item-label-size);
+  font-weight: 500;
+}
+
+.nav-locale-separator {
+  width: 1px;
+  height: var(--nav-locale-separator-height);
+  background: var(--nav-locale-separator-color);
+}
+
+.nav-locale-mobile-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  background: rgb(var(--color-white-rgb) / 0.1);
+  transition: all 0.2s ease-out;
+}
+
+.nav-locale-mobile-toggle:hover {
+  transform: scale(1.05);
+  background: rgb(var(--color-white-rgb) / 0.2);
+  filter: drop-shadow(var(--shadow-glow-white-strong));
+}
+
+.nav-locale-mobile-label {
+  font-size: var(--size-text-base);
+  font-weight: 700;
+  color: rgb(var(--color-white-rgb));
+  text-transform: uppercase;
+  margin-left: 0.125rem;
+}
+
+.nav-locale-mobile-swap-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+  color: rgb(var(--color-white-rgb) / 0.7);
+  transition: all 0.2s ease-out;
+}
+
+.nav-locale-mobile-toggle:hover .nav-locale-mobile-swap-icon {
+  color: rgb(var(--color-white-rgb));
 }
 
 @media (max-width: 830px) {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 
 interface ContactButton {
   id: string;
@@ -11,6 +12,7 @@ interface ContactButton {
 }
 
 export default function Contact() {
+  const t = useTranslations("contact");
   const [revealed, setRevealed] = useState<Record<string, boolean>>({});
   const timersRef = useRef<Record<string, NodeJS.Timeout>>({});
 
@@ -40,7 +42,7 @@ export default function Contact() {
   const contactButtons: ContactButton[] = [
     {
       id: "email",
-      label: "SCRIVI UNA EMAIL",
+      label: t("buttons.email"),
       revealedLabel: "pinksizemusic@gmail.com",
       href: "mailto:pinksizemusic@gmail.com",
       icon: (
@@ -61,7 +63,7 @@ export default function Contact() {
     },
     {
       id: "matteo",
-      label: "CHIAMA MATTEO",
+      label: t("buttons.callMatteo"),
       revealedLabel: "+39 349 2372771",
       href: "tel:+393492372771",
       icon: (
@@ -82,7 +84,7 @@ export default function Contact() {
     },
     {
       id: "andrea",
-      label: "CHIAMA ANDREA",
+      label: t("buttons.callAndrea"),
       revealedLabel: "+39 389 7843610",
       href: "tel:+393897843610",
       icon: (
@@ -105,15 +107,15 @@ export default function Contact() {
 
   return (
     <section
-      id="contatti"
+      id="contact"
       className="bg-[rgb(var(--color-black-rgb))] text-[rgb(var(--color-white-rgb))] py-[var(--section-padding-y)]"
     >
       <div className="max-w-3xl mx-auto px-[var(--section-padding-x)]">
         <h2 className="text-[length:var(--section-title-size)] md:text-[length:var(--section-title-size-lg)] font-bold text-center mb-[var(--section-title-margin-bottom)] tracking-tight">
-          CONTATTI
+          {t("title")}
         </h2>
         <p className="text-center text-[rgb(var(--color-gray-400-rgb))] mb-[var(--space-4)] text-[length:var(--contact-label-size)]">
-          Info & Booking
+          {t("infoBooking")}
         </p>
 
         {/* Contact Buttons */}
@@ -143,7 +145,7 @@ export default function Contact() {
 
         {/* Social Links */}
         <p className="text-center text-[rgb(var(--color-gray-400-rgb))] mb-[var(--space-4)] text-[length:var(--contact-label-size)]">
-          Seguici su
+          {t("followUs")}
         </p>
         <div className="flex justify-center gap-[var(--contact-social-gap)]">
           <a

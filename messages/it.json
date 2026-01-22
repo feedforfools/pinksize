@@ -1,0 +1,51 @@
+{
+  "app": {
+    "name": "Pink Size"
+  },
+  "nav": {
+    "bio": "BIOGRAFIA",
+    "videos": "VIDEO",
+    "live": "LIVE",
+    "contact": "CONTATTI",
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu",
+    "switchToEnglish": "Passa all'inglese",
+    "switchToItalian": "Passa all'italiano",
+    "switchLanguage": "Cambia lingua",
+    "language": "Lingua"
+  },
+  "bio": {
+    "title": "BIOGRAFIA",
+    "textLine1": "Dal 2005 vi facciamo emozionare proponendo con grande passione le sonorità tipiche dei Pink Floyd a 360 gradi.",
+    "textLine2": "La scaletta abbraccia tutta la discografia, dalla psichedelia di Astronomy Domine ed Echoes, passando per l'evoluzione degli anni '70 (Atom Heart Mother, Dark Side of the Moon, Wish You Were Here, Animals e The Wall), fino al loro ultimo album in studio.",
+    "instagramLabel": "Apri Instagram di {name}",
+    "roles": {
+      "guitarVocals": "Chitarra e Voce",
+      "bassVocals": "Basso e Voce",
+      "keysVocals": "Tastiere e Voce",
+      "drumsPercussion": "Batteria e Percussioni"
+    }
+  },
+  "events": {
+    "title": "PROSSIMI EVENTI",
+    "empty": "Nessun evento in programma",
+    "monthsShort": ["GEN", "FEB", "MAR", "APR", "MAG", "GIU", "LUG", "AGO", "SET", "OTT", "NOV", "DIC"]
+  },
+  "videos": {
+    "title": "VIDEO",
+    "empty": "Nessun video disponibile"
+  },
+  "contact": {
+    "title": "CONTATTI",
+    "infoBooking": "Info & Booking",
+    "followUs": "Seguici su",
+    "buttons": {
+      "email": "SCRIVI UNA EMAIL",
+      "callMatteo": "CHIAMA MATTEO",
+      "callAndrea": "CHIAMA ANDREA"
+    }
+  },
+  "footer": {
+    "copyright": "Copyright © {year} Pink Size. Tutti i diritti riservati."
+  }
+}
