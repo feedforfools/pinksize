@@ -4,11 +4,15 @@
   },
   "nav": {
     "bio": "BIOGRAPHY",
-    "videos": "VIDEO",
+    "videos": "VIDEOS",
     "live": "LIVE",
     "contact": "CONTACT",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "switchToEnglish": "Switch to English",
+    "switchToItalian": "Switch to Italian",
+    "switchLanguage": "Switch language",
+    "language": "Language"
   },
   "bio": {
     "title": "BIOGRAPHY",

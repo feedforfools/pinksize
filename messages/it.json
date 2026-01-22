@@ -8,7 +8,11 @@
     "live": "LIVE",
     "contact": "CONTATTI",
     "openMenu": "Apri menu",
-    "closeMenu": "Chiudi menu"
+    "closeMenu": "Chiudi menu",
+    "switchToEnglish": "Passa all'inglese",
+    "switchToItalian": "Passa all'italiano",
+    "switchLanguage": "Cambia lingua",
+    "language": "Lingua"
   },
   "bio": {
     "title": "BIOGRAFIA",
