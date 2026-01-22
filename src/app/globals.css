@@ -333,15 +333,39 @@
   background: var(--nav-locale-separator-color);
 }
 
-.nav-locale-mobile-link {
+.nav-locale-mobile-toggle {
   display: inline-flex;
   align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  background: rgb(var(--color-white-rgb) / 0.1);
   transition: all 0.2s ease-out;
 }
 
-.nav-locale-mobile-link:hover {
-  transform: scale(1.1);
+.nav-locale-mobile-toggle:hover {
+  transform: scale(1.05);
+  background: rgb(var(--color-white-rgb) / 0.2);
   filter: drop-shadow(var(--shadow-glow-white-strong));
+}
+
+.nav-locale-mobile-label {
+  font-size: var(--size-text-base);
+  font-weight: 700;
+  color: rgb(var(--color-white-rgb));
+  text-transform: uppercase;
+  margin-left: 0.125rem;
+}
+
+.nav-locale-mobile-swap-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+  color: rgb(var(--color-white-rgb) / 0.7);
+  transition: all 0.2s ease-out;
+}
+
+.nav-locale-mobile-toggle:hover .nav-locale-mobile-swap-icon {
+  color: rgb(var(--color-white-rgb));
 }
 
 @media (max-width: 830px) {

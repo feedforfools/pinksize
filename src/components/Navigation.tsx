@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useState, useEffect, useRef } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, RefreshCw } from "lucide-react";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -350,16 +350,23 @@ export default function Navigation() {
                 <div className="nav-locale-separator" />
                 <button
                   onClick={() => handleLocaleSwitch(otherLocale)}
-                  className="nav-locale-mobile-link"
+                  className="nav-locale-mobile-toggle"
                   aria-label={t("switchLanguage")}
                 >
                   <Image
-                    src={otherLang.flagUrl}
-                    alt={otherLang.name}
+                    src={currentLang.flagUrl}
+                    alt={currentLang.name}
                     width={24}
                     height={18}
                     className="nav-locale-flag"
                     unoptimized
+                  />
+                  <span className="nav-locale-mobile-label">
+                    {locale.toUpperCase()}
+                  </span>
+                  <RefreshCw
+                    className="nav-locale-mobile-swap-icon"
+                    strokeWidth={2.5}
                   />
                 </button>
               </div>
