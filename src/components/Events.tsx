@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Event, getUpcomingEvents } from "@/lib/supabase";
+import type { Event } from "@/lib/db";
 
 function getDateParts(
   dateString: string,
@@ -62,7 +62,8 @@ export default function Events() {
   useEffect(() => {
     async function fetchEvents() {
       try {
-        const data = await getUpcomingEvents();
+        const res = await fetch("/api/events");
+        const data: Event[] = await res.json();
         setEvents(data);
       } catch (error) {
         console.error("Error fetching events:", error);

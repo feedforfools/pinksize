@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { getVideos, Video } from "@/lib/supabase";
+import type { Video } from "@/lib/db";
 
 // VHS Tracking effect overlay
 function VHSOverlay() {
@@ -288,7 +288,8 @@ export default function Videos() {
 
     async function fetchVideos() {
       try {
-        const data = await getVideos();
+        const res = await fetch("/api/videos");
+        const data: Video[] = await res.json();
         if (isMounted) {
           setVideos(data);
         }

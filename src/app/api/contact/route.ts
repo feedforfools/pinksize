@@ -26,8 +26,7 @@ export async function POST(request: NextRequest) {
     // Options:
     // 1. Use Resend: https://resend.com
     // 2. Use SendGrid: https://sendgrid.com
-    // 3. Use Supabase Edge Functions
-    // 4. Store in Supabase database
+    // 3. Store in the Neon database
 
     // For now, just log and return success
     console.log("Contact form submission:", {

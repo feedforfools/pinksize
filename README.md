@@ -29,12 +29,11 @@ Open [http://localhost:3000](http://localhost:3000).
 - Update images in `public/images/` to customize the look.
 - Content lives in `src/app` and `src/components`.
 
-## Supabase
+## Database (Neon)
 
-Create a Supabase project and add these environment variables to your `.env.local`:
+Create a [Neon](https://neon.tech) project and add this environment variable to your `.env.local`:
 
-- `NEXT_PUBLIC_SUPABASE_URL`
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `DATABASE_URL` — your Neon Postgres connection string
 
 Required tables:
 
